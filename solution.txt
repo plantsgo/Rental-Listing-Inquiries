@@ -1,4 +1,18 @@
-My best single model:
+After learned solutions by others,especially Little Boat,simple but effective!!amazing!
+I spend a lot of time FE,and submit more times then Faron,Little Boat et.
+I'll thanks KazAnova who public the leak,otherwise I can't do this better.You are my idol.
+My English is poor,if I write confused,please tell me,many thanks.
+
+FE:
+I split the base features two classes:
+1:manager:created,description,price,et
+2:building:bathrooms,bedrooms,latitude,longitude,display_address,featuers,photos,et
+then I link and compare them.
+
+My best single model at: https://github.com/plantsgo/Rental-Listing-Inquiries
+
+score:Public:0.50379  Private:0.50500
+
 you should add train.json and test.json in the folder.
 the jpgs.json is the shape of each photos.
 the listing_image_time.csv is the leak @KazAnova said.
@@ -27,11 +41,15 @@ the reg model have a good importance in my model.
 
 ¢Ú:and I merge high and medium level ,then userd[lgb,nn,lgb_reg,nn_reg,et,rf] in my best dataset. cv flod=5
 
-¢Û:[nn,nn_reg,xgb,knn,gb,rf,et,lr,ada_reg,rf_reg,gb_reg,et_reg,xgb_reg]   cv flod=10
+¢Û:[nn,nn_reg,xgb,gb,rf,et,lr,xgb_reg]@last three datasets   cv flod=5
+
+¢Ü:[nn,nn_reg,xgb,gb,rf,et,lr,xgb_reg]add magic feature @last three datasets   cv flod=5
+
+¢Ý:[nn,nn_reg,xgb,knn,gb,rf,et,lr,ada_reg,rf_reg,gb_reg,et_reg,xgb_reg]@last three datasets   cv flod=10
 
 
 Level 3:
-1.user ¢Ù,¢Ú,¢Û as metefeatures with xgb,nn,et.
+1.user ¢Ù,¢Ú,¢Û,¢Ü as metefeatures with xgb,nn,et.
 with a feature from description.
 classify the source by description:
         
@@ -42,11 +60,14 @@ CooperCooper.com
 pre=((xgb**0.65)*(nn**0.35))*0.85+et*0.15
 then userd @weiwei 's Prior correction. but only improved 0.00001-0.00002
 
-2.user ¢Ù,¢Û as metefeatures with xgb,nn,et.
+2.user ¢Ù,¢Ú,¢Ý as metefeatures with xgb,nn,et.
 pre=((xgb**0.65)*(nn**0.35))*0.85+et*0.15
 
 Level 4:
 50/50 average level 3
+
+
+Last,Thanks all shares,I learned many from the kernels and discussions.
 
 
 

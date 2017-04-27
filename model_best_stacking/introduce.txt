@@ -1,0 +1,7 @@
+将生成的all20.csv放到该文件夹
+需要安装lightGBM,keras,sklearn,xgboost
+stacking_util生成stacking中间文件
+
+put the all20.csv in this folder
+you must have lightGBM,keras,sklearn,xgboost
+run stacking_util create metafeature
