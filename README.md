@@ -60,11 +60,11 @@ CooperCooper.com
 <p><a  website_redacted
 </li></ul></p>
 
-pre=((xgb**0.65)*(nn**0.35))*0.85+et*0.15
+pre=((xgb^0.65)*(nn^0.35))*0.85+et*0.15
 then userd @weiwei 's Prior correction. but only improved 0.00001-0.00002
 
 2.user ①,②,⑤ as metefeatures with xgb,nn,et.
-pre=((xgb**0.65)*(nn**0.35))*0.85+et*0.15
+pre=((xgb^0.65)*(nn^0.35))*0.85+et*0.15
 
 Level 4:
 50/50 average level 3
