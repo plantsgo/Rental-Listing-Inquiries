@@ -1,101 +1,77 @@
-After learned solutions by others,especially Little Boat,simple but effective!!amazing!
 
-I spend a lot of time FE,and submit more times then Faron,Little Boat et.
+# Kaggle Rethop Solution Ranking 1st
 
-I'll thanks KazAnova who public the leak,otherwise I can't do this better.You are my idol.
+## score: *Public*:0.50379    *Private*:0.50500
 
-My English is poor,if I write confused,please tell me,many thanks.haha..
-
-**FE:**
+## Features Enginnering
 
 I split the base features two classes:
 
-manager:created,description,price,et
+1. manager:created,description,price,et
 
-building:bathrooms,bedrooms,latitude,longitude,display_address,featuers,photos,et
+2. building:bathrooms,bedrooms,latitude,longitude,display_address,featuers,photos,et
 
-Then I link and compare them one by one.
+## Files 
 
-My best single model at: https://github.com/plantsgo/Rental-Listing-Inquiries
+* *the jpgs.json* is the shape of each photos.
 
-score:Public:0.50379  Private:0.50500
+* *listing_image_time.csv* is the leak @KazAnova said.
 
-you should add train.json and test.json in the folder.
+## How to Use
 
-the jpgs.json is the shape of each photos.
+1. *sigma.py* to create the csv file.
 
-the listing_image_time.csv is the leak @KazAnova said.
+2. *script.py* to create the features what @gdy5 show.
 
-1.run sigma.py to create the csv file.
+3. *feature_tt.py* to create the base features.
 
-2.run script.py to create the features what @gdy5 show.
+4. *feature_tt_long.py* to create four features which spend about four hours...but I have generate already which named timeout.csv,so you can skip it....
 
-3.run feature_tt.py to create the base features.
+5. *xgb.py* and will create the last result.
 
-4.run feature_tt_long.py to create four features which spend long time,about four hours...but I have give it which named timeout.csv,so you can skip it....
+## Transform
 
-5.run xgb.py and will create the last result.
+  1. X    
 
-**Transform：**
+  2. log10（X+1)    
 
-1.X
+## Ensemble
 
-2.log10（X+1)
+  My best nn model is log10(X+1) score *LB:0.535* before add magic feature.
 
-My best nn model is log10(X+1) score LB:0.535 before add magic feature.
-
-Ensemble:
-Level 2:
+### Level 2:
 
 I have 4 datasets:
 
-1.My best single model.
+  1. My best single model.
 
-2.some features which not improve at my best model ,but can improve at model with base features.
+  2. some features which not improve at my best model ,but can improve at model with base features.
 
-3.@gdy5 's kernel with some of my features.
+  3. @gdy5 's kernel with some of my features.
 
-4.@Branden Murrayit 's kernel add some of my features.
+  4. @Branden Murrayit 's kernel add some of my features.
 
-①:each dateset I used [xgb,nn,gb,rf,et,lr,xgb_reg,lgb_reg,nn_reg] cv flod=5
+
+Each dateset I used [xgb,nn,gb,rf,et,lr,xgb_reg,lgb_reg,nn_reg] cv fold=5
 
 the reg model have a good importance in my model.
 
-②:and I merge high and medium level ,then userd[lgb,nn,lgb_reg,nn_reg,et,rf] in my best dataset. cv flod=5
 
-③:[nn,nn_reg,xgb,gb,rf,et,lr,xgb_reg]@last three datasets   cv flod=5
+### Level 3:
 
-④:[nn,nn_reg,xgb,gb,rf,et,lr,xgb_reg]add magic feature @last three datasets   cv flod=5
+  1. 1,2,3 metefeatures with xgb,nn,et.
 
-⑤:[nn,nn_reg,xgb,knn,gb,rf,et,lr,ada_reg,rf_reg,gb_reg,et_reg,xgb_reg]@last three datasets   cv flod=10
+  *pre=((xgb^0.65)*(nn^0.35))*0.85+et*0.15*
+  then userd @weiwei 's Prior correction. but only improved 0.00001-0.00002
 
+  2. 1,2,3,4 metefeatures with xgb,nn,et.
+  *pre=((xgb^0.65)*(nn^0.35))*0.85+et*0.15*
 
-Level 3:
-
-1.user ①,②,③,④ as metefeatures with xgb,nn,et.
-
-with a feature from description,Classify the source by description:
-begin with "           "
-
-CooperCooper.com
-
-p a  website_redacted
-
-li /ul /p
-
-it improved at public but turn bad at pravate.Maybe can remove it.
-
-pre=((xgb^0.65)*(nn^0.35))*0.85+et*0.15
-then userd @weiwei 's Prior correction. but only improved 0.00001-0.00002
-
-2.user ①,②,⑤ as metefeatures with xgb,nn,et.
-pre=((xgb^0.65)*(nn^0.35))*0.85+et*0.15
-
-Level 4:
-50/50 average level 3
+### Level 4:
+  50/50 average level 3
 
 
-**Last,Thanks all shares,I learned many from the kernels and discussions.**
+##*Last,Thanks all shares,I learned many from the kernels and discussions.*
 
 
 
