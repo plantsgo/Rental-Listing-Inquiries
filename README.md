@@ -1,5 +1,6 @@
 # Rental-Listing-Inquiries
 kaggle Two Sigma Connect: Rental Listing Inquiries
+
 After learned solutions by others,especially Little Boat,simple but effective!!amazing!
 I spend a lot of time FE,and submit more times then Faron,Little Boat et.
 I'll thanks KazAnova who public the leak,otherwise I can't do this better.You are my idol.
