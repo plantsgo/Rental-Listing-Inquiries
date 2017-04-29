@@ -2,8 +2,8 @@
 import pandas as pd
 import math
 
-train=pd.read_csv("../train.csv")
-test=pd.read_csv("../test.csv")
+train=pd.read_csv("train.csv")
+test=pd.read_csv("test.csv")
 test["interest_level"]="nnnn"
 df=train.append(test)
 df=df.fillna("0")
