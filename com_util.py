@@ -1,6 +1,6 @@
 import pandas as pd
 def merge_count(df,columns,value,cname):
-    add = pd.DataFrame(df.groupby(columns)[value].count()).reset_index()
+    add = pd.DataFrame(df.groupby(columns)[value].count()).reset_index()         #converting in dataframe structure + chanage in index
     add.columns=columns+[cname]
     df=df.merge(add,on=columns,how="left")
     return df

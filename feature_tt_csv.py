@@ -2,10 +2,10 @@
 import pandas as pd
 import math
 
-train=pd.read_csv("train.csv")
-test=pd.read_csv("test.csv")
-test["interest_level"]="nnnn"
-df=train.append(test)
+train=pd.read_csv("train.csv")        #creating a train named dataframe of train.csv file
+test=pd.read_csv("test.csv")           #creating a test named dataframe
+test["interest_level"]="nnnn"      
+df=train.append(test)               #modified dataframe 
 df=df.fillna("0")
 
 df["photo_num"]=map(lambda x:len(x.split(",")) if x!="[]" else 0,df["photos"])
@@ -42,7 +42,7 @@ df["room_sum"] = df["bedrooms"]+df["bathrooms"]
 df["bed_all_per"] = df["bedrooms"]/df["room_sum"]
 
 #供求关系(这里可能需要组合一下构造，比如某街道同时满足房间数，某月某街道同时满足房间数，类似于求平均房价那里)
-#counts of these
+#counts of these columns
 display=df["display_address"].value_counts()
 manager_id=df["manager_id"].value_counts()
 building_id=df["building_id"].value_counts()
@@ -60,7 +60,7 @@ df["bathrooms_count"]=map(lambda x:bathrooms[x],df["bathrooms"])
 df["day_count"]=map(lambda x:days[x],df["time"])
 
 #经理的活跃程度
-#how many days the manager active
+#active days of the manager
 add=pd.DataFrame(df.groupby(["manager_id"]).time.nunique()).reset_index()
 add.columns=["manager_id","manager_active"]
 df=df.merge(add,on=["manager_id"],how="left")
